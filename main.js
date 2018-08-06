@@ -13,7 +13,7 @@ var SpacebookApp = function() {
         // {text: "Hello world", id: 0, comments:[
         //   { text: "Man, this is a comment!"},
         //   { text: "Man, this is a comment!"},
-        //   { text: "Man, this is a comment !"}
+        //   { text: "Man, this is a comment!"}
         // ]}
     ];
 
