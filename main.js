@@ -30,13 +30,16 @@ function render() {
 
 //INDIVIDUAL PROJECT EXERCISE 3
 function removePost(id) {
+    let toRemove = findPostByID(id);
+    posts.splice(toRemove, 1);
+}
+
+function findPostByID(id) {
     for (let i in posts) {
         if (parseInt(id) === parseInt(posts[i].id)) {
-            posts.splice(i, 1);
-            return;
+            return i;
         }
     }
-
 }
 
 var bindEvent = function(id) {
