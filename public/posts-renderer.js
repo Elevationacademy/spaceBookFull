@@ -25,6 +25,7 @@ class PostsRenderer {
         $commentsList.empty();
         let template = Handlebars.compile(this.$commentTemplate);
         for (let i = 0; i < posts[postIndex].comments.length; i++) {
+          //alert("render:"+JSON.stringify(posts[postIndex].comments[i]));
           let newHTML = template(posts[postIndex].comments[i]);
           $commentsList.append(newHTML);
         }
