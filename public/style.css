@@ -1,5 +1,8 @@
+*{
+    color: white;
+}
 .post {
-    padding: 20px 0;
+    padding: 0px 0;
 }
 
 .btn-sm {
@@ -13,3 +16,7 @@
 .comments-container {
     display: none;
 }
+
+
+body {margin: 0;}
+canvas {background: rgb(0, 0, 0);height:100%;position: absolute;} 

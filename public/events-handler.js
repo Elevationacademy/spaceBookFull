@@ -11,15 +11,11 @@ class EventsHandler {
             if ($input.val() === "") {
                 alert("Please enter text!"); 
             } else {
-                this.postsRepository.postAjax("/add-new-post","POST",{text: $input.val()})
+                this.postsRepository.postAjax("/posts","POST",{text: $input.val()})
                 .then((data)=>{
                     this.postsRepository.addPost(data);
                     this.postsRenderer.renderPosts(this.postsRepository.posts);
                 })
-                .catch((err)=>{
-                    alert("Oops!!");
-                    console.log('Error:something wrong happan during ajax GET request');
-                });
                 $input.val("");
             }
         });        
@@ -28,16 +24,12 @@ class EventsHandler {
     registerRemovePost() {
         this.$posts.on('click', '.remove-post', (event) => {
             let postID = $(event.currentTarget).closest('.post').attr("post-id");
-            this.postsRepository.utilAjax("/delete-post/"+postID,"DELETE")
+            this.postsRepository.utilAjax("/posts/"+postID,"DELETE")
             .then((data)=>{
                 this.postsRepository.removePost(postID);
                 this.postsRenderer.renderPosts(this.postsRepository.posts);
                 console.log(data);
             })
-            .catch((err)=>{
-                alert("Oops!! cannot delete:"+postID);
-                console.log('Error:something wrong happan during ajax GET request');
-            });
         });
         
     }
@@ -60,7 +52,7 @@ class EventsHandler {
             let postID = $(event.currentTarget).closest('.post').attr("post-id");
             let postIndex = this.postsRepository._findIndexByPostID(postID);
             let newComment = { text: $comment.val(), user: $user.val() };
-            this.postsRepository.postAjax("/add-new-comment/"+postID,"POST",newComment)
+            this.postsRepository.postAjax("/comments/"+postID,"POST",newComment)
             .then((data)=>{
                 //alert("data:"+JSON.stringify(data.comments[data.comments.length-1]));
                 this.postsRepository.addComment(data.comments[data.comments.length-1], postID);
@@ -86,7 +78,7 @@ class EventsHandler {
             let postIndex =  this.postsRepository._findIndexByPostID(postID);
             let commentIndex =  this.postsRepository._findIndexByCommentID(commentID);
             //alert(commentID);
-            this.postsRepository.utilAjax("/delete-comment/"+postID+"/"+commentIndex,"DELETE")
+            this.postsRepository.utilAjax("/comments/"+postID+"/"+commentIndex,"DELETE")
             .then((data)=>{
                 this.postsRepository.deleteComment(postIndex, commentIndex);
                 this.postsRenderer.renderComments(this.postsRepository.posts, postIndex);

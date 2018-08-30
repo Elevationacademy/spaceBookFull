@@ -45,7 +45,10 @@ class PostsRepository {
         return $.ajax({
             url: url,
             method: method,
-        })
+        }).catch((err)=>{
+            alert("Oops!!");
+            console.log('Error:something wrong happan during ajax GET request');
+        });
     };
     
     postAjax(url,method,data){
@@ -55,6 +58,10 @@ class PostsRepository {
             data:data,
             dataType:"json",
         })
+        .catch((err)=>{
+            alert("Oops!!");
+            console.log('Error:something wrong happan during ajax GET request');
+        });
     };
 }
 

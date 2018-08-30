@@ -4,21 +4,25 @@
 <head>
     <link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
-    <title></title>
+    <title>Spacebook Fullstack</title>
 </head>
 
 <body>
+    <canvas id="c1"></canvas>
+
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <div class="page-header">
                     <h1>Spacebook</h1>
                 </div>
-                <div class="posts"></div>
+                <div class="posts">
+                    <img src="https://www.firstonetv.net/images/ajax-loader.gif?1" alt="">
+                </div>
                 <form class="post-form">
                     <h3>Add a New Post</h3>
                     <div class="form-group">
-                        <input class="form-control" type="text" id="postText" placeholder="Enter Post Text"/>
+                        <input class="form-control" type="text" id="postText" placeholder="Enter Post Text" />
                     </div>
                     <button type="button" id="addpost" class="btn btn-primary">Post</button>
                 </form>
@@ -45,6 +49,7 @@
     <script src="jquery/dist/jquery.js"></script>
     <script src="handlebars/dist/handlebars.js"></script>
     <script src="main.js" type="module"></script>
+    <script src="space.js"></script>
 </body>
 
 </html>
